@@ -28,33 +28,38 @@ def setup_db(app, database_path=database_path):
 
 
 """
-User
+Users
 
 """
 
 
-class User(db.Model):
+class Users(db.Model):
     __tablename__ = 'users'
 
     id = db.Column(db.Integer, primary_key=True, autoincrement=True)
     is_admin = db.Column(db.Boolean, default=False, nullable=False)
+    name = db.Column(db.String, nullable=False)
     email = db.Column(db.String(255), unique=True, nullable=False)
     password = db.Column(db.String(30), nullable=False)
     registered_on = db.Column(db.DateTime, nullable=False)
-    public_key = db.Column(db.String, unique=True, nullable=False)
-    private_key = db.Column(db.String, unique=True, nullable=False)
+    public_key = db.Column(db.Integer, unique=True, nullable=False)
+    # private_key = db.Column(db.String, unique=True, nullable=False)
 
-    def __init__(self, email, password, public_key, private_key, is_admin=False):
-        self.email = email
-        self.registered_on = datetime.datetime.now()
-        self.is_admin = is_admin
-        # TODO: implement some functionalities on the these fields(3) below:
-        self.password = password
-        self.public_key = public_key
-        self.private_key = private_key
+    # def __init__(self, email, password, public_key, private_key, is_admin=False):
+    #     self.email = email
+    #     self.registered_on = datetime.datetime.now()
+    #     self.is_admin = is_admin
+    #     # TODO: implement some functionalities on the these fields(3) below:
+    #     self.password = password
+    #     self.public_key = public_key
+    #     self.private_key = private_key
 
-        # self.password = bcrypt.generate_password_hash(
-        #     password, app.config.get('BCRYPT_LOG_ROUNDS')).decode()
+    # self.password = bcrypt.generate_password_hash(
+    #     password, app.config.get('BCRYPT_LOG_ROUNDS')).decode()
+
+    def insert(self):
+        db.session.add(self)
+        db.session.commit()
 
 
 """
