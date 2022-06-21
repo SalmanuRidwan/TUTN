@@ -4,8 +4,8 @@ from flask import Flask, jsonify, request, redirect, abort, make_response
 from flask_cors import CORS
 from flask_sqlalchemy import SQLAlchemy
 from werkzeug.security import generate_password_hash, check_password_hash
-import jwt
 import uuid
+import jwt
 import datetime
 
 from functools import wraps
