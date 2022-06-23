@@ -135,8 +135,8 @@ def create_app(test_config=None):
         })
 
     @app.route('/codingschools', methods=['POST', 'GET'])
-    @token_required
-    def create_codingschool(current_user):  # TODO: current user!
+    # @token_required
+    def create_codingschool():  # TODO: current user!
         body = request.get_json()
 
         new_name = body.get('name', None)
@@ -168,8 +168,8 @@ def create_app(test_config=None):
         except:
             abort(422)
 
-    @app.route('/codingschools', methods=['POST', 'GET'])
-    @token_required
+    @app.route('/codingschools', methods=['GET'])
+    # @token_required
     def get_all_codingschools(current_user):
         codingschools = CodingSchool.query.filter_by(
             user_id=current_user.id).all()

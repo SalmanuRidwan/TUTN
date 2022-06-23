@@ -8,7 +8,7 @@ import json
 database_name = 'bootcamp'
 
 database_path = "postgresql://{}:{}@{}/{}".format(
-    "postgres", "postgres", "localhost:5432", database_name
+    "postgres", "abc", "localhost:5432", database_name
 )
 
 db = SQLAlchemy()

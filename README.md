@@ -4,6 +4,7 @@
 
 **Base** URL: At present this app can only be run locally and is not hosted as a base URL. The backend app is hosted at the default, http://localhost:5000/, which is set as a proxy in the frontend configuration
 **Authentication**: This application require authentication or API keys
+> *Recommended*: Run this program in a virtual environment
 
 ## Error Handling
 Errors are returned as JSON objects in the following format
@@ -20,7 +21,7 @@ The API will return three error types requests fail:
 
 400: Bad Request
 404: Resource Not Found
-422: Nop Processable
+422: Not Processable
 
 ### Endpoints
 
@@ -57,8 +58,8 @@ Results are paginated in groups of 3 and include a request argument to choose pa
 
 ### General:
 
-- [x] Creates a new codingschool using the submitted name, address, state and rating. Returns the id of the created codingschool, success value, total codingschools, and codingschools listed based on the current page number to update the frontend
-- [x] `curl http://localhost:5000/codingschools -X POST -H "Content-Type: application/json" -d '{"name": "hello", "address": "kinkinau gra", "state": "kaduna", "rating": 2}'`
+- Creates a new codingschool using the submitted name, address, state and rating. Returns the id of the created codingschool, success value, total codingschools, and codingschools listed based on the current page number to update the frontend
+- `curl http://localhost:5000/codingschools -X POST -H "Content-Type: application/json" -d '{"name": "hello", "address": "kinkinau gra", "state": "kaduna", "rating": 2}'`
 
 ```
     {
@@ -85,16 +86,6 @@ Results are paginated in groups of 3 and include a request argument to choose pa
     }
 ```
 
-## PATCH /codingschools/(codingschool_id)
+## Setting Up Development Environment
 
-### General:
-
-- [x] if provided, updates the rating of a specified codingschool. Returns the success value and id of the modified codingschool.
-`curl http://localhost:5000/codingschools/4 -X PATCH -H "Content-Type: application/json" -d '{"rating": 3}'`
-
-```
-{
-    "id": 4,
-    "success": true
-}
-```
+- Create and activate a virtual environment
